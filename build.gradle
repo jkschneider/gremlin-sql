@@ -1,0 +1,40 @@
+apply plugin: 'groovy'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+buildscript {
+    repositories {
+        maven {
+            name 'JFrog OSS snapshot repo'
+            url  'https://oss.jfrog.org/oss-snapshot-local/'
+        }
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.antlr:antlr4:4.3'
+        classpath 'me.champeau.gradle:antlr4-gradle-plugin:0.1-SNAPSHOT'
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+apply plugin: 'antlr4'
+
+antlr4.output = new File('src/main/groovy/com/github/jkschneider/gremlinsql/grammar')
+antlr4.extraArgs = ['-package', 'com.github.jkschneider.gremlinsql.grammar']
+
+dependencies {
+    compile 'org.antlr:antlr4-runtime:4.3'
+    compile 'org.antlr:antlr4:4.3'
+    compile 'org.codehaus.groovy:groovy-all:2.3.6'
+    compile 'com.tinkerpop.gremlin:gremlin-groovy:2.5.0'
+
+    testCompile('org.spockframework:spock-core:0.7-groovy-2.0') {
+        exclude module: 'groovy-all'
+    }
+}
