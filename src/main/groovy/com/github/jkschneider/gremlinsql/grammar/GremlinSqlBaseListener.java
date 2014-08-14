@@ -17,26 +17,13 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { }
+	@Override public void enterSelect(@NotNull GremlinSqlParser.SelectContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterColumn_alias(@NotNull GremlinSqlParser.Column_aliasContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitColumn_alias(@NotNull GremlinSqlParser.Column_aliasContext ctx) { }
+	@Override public void exitSelect(@NotNull GremlinSqlParser.SelectContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -56,19 +43,6 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterResult_column(@NotNull GremlinSqlParser.Result_columnContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -82,45 +56,6 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterExpr(@NotNull GremlinSqlParser.ExprContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpr(@NotNull GremlinSqlParser.ExprContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterKeyword(@NotNull GremlinSqlParser.KeywordContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitKeyword(@NotNull GremlinSqlParser.KeywordContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterSelect_core(@NotNull GremlinSqlParser.Select_coreContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitSelect_core(@NotNull GremlinSqlParser.Select_coreContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterTable_name(@NotNull GremlinSqlParser.Table_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -128,32 +63,6 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTable_name(@NotNull GremlinSqlParser.Table_nameContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTable(@NotNull GremlinSqlParser.TableContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTable(@NotNull GremlinSqlParser.TableContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterTable_alias(@NotNull GremlinSqlParser.Table_aliasContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTable_alias(@NotNull GremlinSqlParser.Table_aliasContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

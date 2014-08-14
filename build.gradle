@@ -28,6 +28,10 @@ apply plugin: 'antlr4'
 antlr4.output = new File('src/main/groovy/com/github/jkschneider/gremlinsql/grammar')
 antlr4.extraArgs = ['-package', 'com.github.jkschneider.gremlinsql.grammar']
 
+configurations {
+    all*.exclude module: 'groovy'
+}
+
 dependencies {
     compile 'org.antlr:antlr4-runtime:4.3'
     compile 'org.antlr:antlr4:4.3'
