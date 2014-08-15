@@ -13,7 +13,7 @@ class GremlinFromSqlBuilder {
         GremlinSqlLexer lexer = new GremlinSqlLexer(new ANTLRInputStream(sql))
         CommonTokenStream tokens = new CommonTokenStream(lexer)
 
-        GremlinSqlMappingVisitor gremlinMapping = new GremlinSqlMappingVisitor(g)
+        GremlinSqlMappingListener gremlinMapping = new GremlinSqlMappingListener(g)
 
         ParseTreeWalker walker = new ParseTreeWalker()
         walker.walk(gremlinMapping, new GremlinSqlParser(tokens).select())

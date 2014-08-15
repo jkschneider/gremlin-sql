@@ -9,6 +9,17 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface GremlinSqlListener extends ParseTreeListener {
 	/**
+	 * Enter a parse tree produced by {@link GremlinSqlParser#literal_value}.
+	 * @param ctx the parse tree
+	 */
+	void enterLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GremlinSqlParser#literal_value}.
+	 * @param ctx the parse tree
+	 */
+	void exitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link GremlinSqlParser#select}.
 	 * @param ctx the parse tree
 	 */
@@ -29,6 +40,28 @@ public interface GremlinSqlListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitAny_name(@NotNull GremlinSqlParser.Any_nameContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link GremlinSqlParser#whereCompare}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GremlinSqlParser#whereCompare}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link GremlinSqlParser#column_name}.
+	 * @param ctx the parse tree
+	 */
+	void enterColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GremlinSqlParser#column_name}.
+	 * @param ctx the parse tree
+	 */
+	void exitColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link GremlinSqlParser#result_column}.

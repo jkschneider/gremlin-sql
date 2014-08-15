@@ -12,6 +12,13 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface GremlinSqlVisitor<T> extends ParseTreeVisitor<T> {
 	/**
+	 * Visit a parse tree produced by {@link GremlinSqlParser#literal_value}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link GremlinSqlParser#select}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -24,6 +31,20 @@ public interface GremlinSqlVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitAny_name(@NotNull GremlinSqlParser.Any_nameContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link GremlinSqlParser#whereCompare}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx);
+
+	/**
+	 * Visit a parse tree produced by {@link GremlinSqlParser#column_name}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx);
 
 	/**
 	 * Visit a parse tree produced by {@link GremlinSqlParser#result_column}.
