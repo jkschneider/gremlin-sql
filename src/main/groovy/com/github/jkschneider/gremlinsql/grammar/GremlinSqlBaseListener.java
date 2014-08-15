@@ -82,6 +82,19 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx) { }
 	/**
 	 * {@inheritDoc}

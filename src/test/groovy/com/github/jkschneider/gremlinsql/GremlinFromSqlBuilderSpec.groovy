@@ -48,11 +48,25 @@ class GremlinFromSqlBuilderSpec extends Specification {
         def pipe = translateToGremlin("select * from person where $whereClause", g)
 
         expect:
-        pipe.lastName.collect() == ['schneider']
+        pipe.lastName.collect() == expectedResult
 
         where:
         whereClause                                         |   expectedResult
         "person.firstName = 'jon' and person.age = 30"      |   ['schneider']
         "person.firstName = 'jon' and person.age = 40"      |   []
+    }
+
+    void "Select with where clauses joined by OR"() {
+        setup:
+        def pipe = translateToGremlin("select * from person where $whereClause", g)
+
+        expect:
+        pipe.lastName.collect() == expectedResult
+
+        where:
+        whereClause                                                       |   expectedResult
+        "person.firstName = 'jon' or person.firstName = 'christine'"      |   ['schneider', 'schneider']
+        "person.age = 30 or person.age = 40"                              |   ['schneider']
+        "person.age = 40 or person.age = 50"                              |   []
     }
 }

@@ -47,6 +47,13 @@ public interface GremlinSqlVisitor<T> extends ParseTreeVisitor<T> {
 	T visitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx);
 
 	/**
+	 * Visit a parse tree produced by {@link GremlinSqlParser#whereOr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx);
+
+	/**
 	 * Visit a parse tree produced by {@link GremlinSqlParser#column_name}.
 	 * @param ctx the parse tree
 	 * @return the visitor result

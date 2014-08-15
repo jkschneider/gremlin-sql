@@ -58,6 +58,14 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitColumn_name(@NotNull GremlinSqlParser.Column_nameContext ctx) { return visitChildren(ctx); }
 
 	/**

@@ -64,6 +64,17 @@ public interface GremlinSqlListener extends ParseTreeListener {
 	void exitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link GremlinSqlParser#whereOr}.
+	 * @param ctx the parse tree
+	 */
+	void enterWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link GremlinSqlParser#whereOr}.
+	 * @param ctx the parse tree
+	 */
+	void exitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link GremlinSqlParser#column_name}.
 	 * @param ctx the parse tree
 	 */

@@ -14,9 +14,10 @@ where_clause
     (K_EQ | K_NEQ | K_GT | K_GTE | K_LTE | K_LT)
     literal_value                                                                   # whereCompare
  | table_name '.' column_name K_IN '(' literal_value (',' literal_value)* ')'       # whereIn
- | where_clause AND where_clause                                                    # whereAnd
+ | where_clause K_AND where_clause                                                  # whereAnd
+ | where_clause K_OR where_clause                                                   # whereOr
 
-// | expr ( '=' | '==' | '!=' | '<>' | K_IS | K_IS K_NOT | K_IN | K_LIKE | K_GLOB | K_MATCH | K_REGEXP ) expr
+// | expr ( K_IS | K_IS K_NOT | K_LIKE | K_GLOB | K_MATCH | K_REGEXP ) expr
 
 // | unary_operator expr
 // | expr '||' expr
@@ -24,8 +25,6 @@ where_clause
 // | expr ( '+' | '-' ) expr
 // | expr ( '<<' | '>>' | '&' | '|' ) expr
 // | expr ( '<' | '<=' | '>' | '>=' ) expr
-// | expr K_AND expr
-// | expr K_OR expr
 // | function_name '(' ( K_DISTINCT? expr ( ',' expr )* | '*' )? ')'
 // | K_CAST '(' expr K_AS type_name ')'
 // | expr K_COLLATE collation_name
@@ -73,7 +72,7 @@ K_CURRENT_DATE : C U R R E N T '_' D A T E;
 K_CURRENT_TIME : C U R R E N T '_' T I M E;
 K_CURRENT_TIMESTAMP : C U R R E N T '_' T I M E S T A M P;
 K_WHERE: W H E R E;
-K_EQ: '=';
+K_EQ: ('=' | '==');
 K_NEQ: ('!=' | '<>');
 K_GT: '>';
 K_GTE: '>=';
@@ -81,6 +80,7 @@ K_LT: '<';
 K_LTE: '<=';
 K_IN: I N;
 K_AND: A N D;
+K_OR: O R;
 
 IDENTIFIER
  : '"' (~'"' | '""')* '"'
