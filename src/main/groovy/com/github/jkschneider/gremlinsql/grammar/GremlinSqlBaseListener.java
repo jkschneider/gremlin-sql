@@ -17,6 +17,19 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterWhereAnd(@NotNull GremlinSqlParser.WhereAndContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhereAnd(@NotNull GremlinSqlParser.WhereAndContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -102,6 +115,19 @@ public class GremlinSqlBaseListener implements GremlinSqlListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitTable_name(@NotNull GremlinSqlParser.Table_nameContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterWhereIn(@NotNull GremlinSqlParser.WhereInContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitWhereIn(@NotNull GremlinSqlParser.WhereInContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

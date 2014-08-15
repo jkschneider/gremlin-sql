@@ -64,6 +64,20 @@ class GremlinSqlMappingListener extends GremlinSqlBaseListener {
     }
 
     @Override
+    void enterWhereIn(@NotNull GremlinSqlParser.WhereInContext ctx) {
+        def inList = ctx.literal_value()
+                .collect { literalToObj(it) }
+                .collect { lit ->
+                    if(!(lit instanceof Double)) return lit
+                    return [lit, lit.intValue(), lit.floatValue(), lit.longValue(), lit.shortValue()]
+                }
+                .flatten()
+
+        pipesByLabel.put(ctx.table_name().text, _().has(ctx.column_name().text, T.in, inList))
+        super.enterWhereIn(ctx)
+    }
+
+    @Override
     void exitSelect(@NotNull GremlinSqlParser.SelectContext ctx) {
         pipeline = pipesByLabel.values().inject(g.V) { pipe, nextPipe ->
             pipe.step(nextPipe)

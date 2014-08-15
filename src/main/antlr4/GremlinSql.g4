@@ -12,7 +12,9 @@ select
 where_clause
  : table_name '.' column_name
     (K_EQ | K_NEQ | K_GT | K_GTE | K_LTE | K_LT)
-    literal_value                                           # whereCompare
+    literal_value                                                                   # whereCompare
+ | table_name '.' column_name K_IN '(' literal_value (',' literal_value)* ')'       # whereIn
+ | where_clause AND where_clause                                                    # whereAnd
 
 // | expr ( '=' | '==' | '!=' | '<>' | K_IS | K_IS K_NOT | K_IN | K_LIKE | K_GLOB | K_MATCH | K_REGEXP ) expr
 
@@ -77,6 +79,8 @@ K_GT: '>';
 K_GTE: '>=';
 K_LT: '<';
 K_LTE: '<=';
+K_IN: I N;
+K_AND: A N D;
 
 IDENTIFIER
  : '"' (~'"' | '""')* '"'

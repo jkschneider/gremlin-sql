@@ -14,8 +14,7 @@ class GremlinFromSqlBuilderSpec extends Specification {
     def g
     @Before void before() { g = SampleGraph.create() }
 
-
-    void "Simple select"() {
+    void "Select all"() {
         setup:
         def pipe = translateToGremlin("SELECT * FROM person", g)
 
@@ -35,10 +34,25 @@ class GremlinFromSqlBuilderSpec extends Specification {
         whereClause                     |   description
         "person.firstName = 'jon'"      |   "string equality"
         "person.age = 30"               |   "numeric equality"
+        "person.age = 30.0"             |   "numeric equality with like numeric type"
         "person.age > 29"               |   "greater than"
         "person.age >= 30"              |   "greater than or equal to"
         "person.age < 11"               |   "less than"
         "person.age <= 10"              |   "less than or equal to"
         "person.suffix != null"         |   "null equality and NOT equals"
+        "person.age in (29,30)"         |   "list containment"
+    }
+
+    void "Select with where clauses joined by AND"() {
+        setup:
+        def pipe = translateToGremlin("select * from person where $whereClause", g)
+
+        expect:
+        pipe.lastName.collect() == ['schneider']
+
+        where:
+        whereClause                                         |   expectedResult
+        "person.firstName = 'jon' and person.age = 30"      |   ['schneider']
+        "person.firstName = 'jon' and person.age = 40"      |   []
     }
 }

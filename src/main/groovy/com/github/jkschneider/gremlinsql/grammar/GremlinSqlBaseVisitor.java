@@ -18,6 +18,14 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitWhereAnd(@NotNull GremlinSqlParser.WhereAndContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -67,4 +75,12 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
 	@Override public T visitTable_name(@NotNull GremlinSqlParser.Table_nameContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitWhereIn(@NotNull GremlinSqlParser.WhereInContext ctx) { return visitChildren(ctx); }
 }
