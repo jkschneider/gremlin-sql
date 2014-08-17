@@ -6,7 +6,18 @@ result_column
 
 select
  : K_SELECT result_column ( ',' result_column )* K_FROM table_name
+   ( join_clause )*
    ( K_WHERE where_clause )?
+ ;
+
+join_clause
+ : K_INNER K_JOIN table_name K_ON join_on                                           # innerJoin
+ | K_OUTER K_JOIN table_name K_ON join_on                                           # outerJoin
+ ;
+
+// inner join address on '(person)-label->(*)'
+join_on
+ : '(' join_table_from_name ')' '-' edge_label_name '-' '>' '(' '*' ')'
  ;
 
 where_clause
@@ -15,7 +26,7 @@ where_clause
     literal_value                                                                   # whereCompare
  | table_name '.' column_name K_IN '(' literal_value (',' literal_value)* ')'       # whereIn
  | where_clause K_AND where_clause                                                  # whereAnd
- | where_clause K_OR where_clause                                                   # whereOr
+// | where_clause K_OR where_clause                                                   # whereOr
 
 // | expr ( K_IS | K_IS K_NOT | K_LIKE | K_GLOB | K_MATCH | K_REGEXP ) expr
 
@@ -51,6 +62,14 @@ literal_value
  | K_CURRENT_TIMESTAMP
  ;
 
+edge_label_name
+ : UNQUOTED_IDENTIFIER
+ ;
+
+join_table_from_name
+ : UNQUOTED_IDENTIFIER
+ ;
+
 table_name
  : any_name
  ;
@@ -81,6 +100,14 @@ K_LTE: '<=';
 K_IN: I N;
 K_AND: A N D;
 K_OR: O R;
+K_OUTER: O U T E R;
+K_INNER: I N N E R;
+K_JOIN: J O I N;
+K_ON: O N;
+
+UNQUOTED_IDENTIFIER
+ : [a-zA-Z_] [a-zA-Z_0-9]*
+ ;
 
 IDENTIFIER
  : '"' (~'"' | '""')* '"'

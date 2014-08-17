@@ -35,14 +35,14 @@ class GremlinSqlMappingVisitor extends GremlinSqlBaseVisitor<GremlinPipeline> {
         return pipesByLabel.values().inject(g.V) { pipe, nextPipe -> pipe.step(nextPipe) }
     }
 
-    @Override
-    GremlinPipeline visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) {
-        // FIXME this won't work if the two clauses refer to different `tables`
-        return _().or(
-            super.visitChildren(ctx.where_clause()[0]),
-            super.visitChildren(ctx.where_clause()[1])
-        )
-    }
+//    @Override
+//    GremlinPipeline visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) {
+//        // FIXME this won't work if the two clauses refer to different `tables`
+//        return _().or(
+//            super.visitChildren(ctx.where_clause()[0]),
+//            super.visitChildren(ctx.where_clause()[1])
+//        )
+//    }
 
     @Override
     GremlinPipeline visitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx) {
