@@ -17,7 +17,7 @@ join_clause
 
 // inner join address on '(person)-label->(*)'
 join_on
- : '(' join_table_from_name ')' '-' edge_label_name '-' '>' '(' '*' ')'
+ : '\'' '(' join_table_from_name ')' '-' edge_label_name '-' '>' '(' '*' ')' '\''
  ;
 
 where_clause

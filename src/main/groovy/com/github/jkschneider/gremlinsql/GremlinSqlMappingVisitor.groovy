@@ -35,6 +35,13 @@ class GremlinSqlMappingVisitor extends GremlinSqlBaseVisitor<GremlinPipeline> {
         return pipesByLabel.values().inject(g.V) { pipe, nextPipe -> pipe.step(nextPipe) }
     }
 
+    @Override
+    GremlinPipeline visitInnerJoin(@NotNull GremlinSqlParser.InnerJoinContext ctx) {
+        def joinTable = ctx.join_on().join_table_from_name().text
+        def edge = ctx.join_on().edge_label_name().text
+        return null
+    }
+
 //    @Override
 //    GremlinPipeline visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) {
 //        // FIXME this won't work if the two clauses refer to different `tables`

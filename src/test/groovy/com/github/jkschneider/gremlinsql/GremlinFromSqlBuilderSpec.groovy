@@ -69,4 +69,12 @@ class GremlinFromSqlBuilderSpec extends Specification {
         "person.age = 30 or person.age = 40"                              |   ['schneider']
         "person.age = 40 or person.age = 50"                              |   []
     }
+
+    void "Select statement with join"() {
+        setup:
+        def pipe = translateToGremlin("select * from person inner join address on '(person)-address->(*)'", g)
+
+        expect:
+        pipe.lastName.collect() == ['schneider']
+    }
 }

@@ -18,22 +18,6 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitWhereAnd(@NotNull GremlinSqlParser.WhereAndContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
 	@Override public T visitSelect(@NotNull GremlinSqlParser.SelectContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -42,23 +26,7 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitAny_name(@NotNull GremlinSqlParser.Any_nameContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx) { return visitChildren(ctx); }
-
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation returns the result of calling
-	 * {@link #visitChildren} on {@code ctx}.</p>
-	 */
-	@Override public T visitWhereOr(@NotNull GremlinSqlParser.WhereOrContext ctx) { return visitChildren(ctx); }
+	@Override public T visitInnerJoin(@NotNull GremlinSqlParser.InnerJoinContext ctx) { return visitChildren(ctx); }
 
 	/**
 	 * {@inheritDoc}
@@ -82,6 +50,14 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitJoin_on(@NotNull GremlinSqlParser.Join_onContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitTable_name(@NotNull GremlinSqlParser.Table_nameContext ctx) { return visitChildren(ctx); }
 
 	/**
@@ -90,5 +66,61 @@ public class GremlinSqlBaseVisitor<T> extends AbstractParseTreeVisitor<T> implem
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
+	@Override public T visitOuterJoin(@NotNull GremlinSqlParser.OuterJoinContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
 	@Override public T visitWhereIn(@NotNull GremlinSqlParser.WhereInContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitWhereAnd(@NotNull GremlinSqlParser.WhereAndContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitLiteral_value(@NotNull GremlinSqlParser.Literal_valueContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitEdge_label_name(@NotNull GremlinSqlParser.Edge_label_nameContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitJoin_table_from_name(@NotNull GremlinSqlParser.Join_table_from_nameContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitAny_name(@NotNull GremlinSqlParser.Any_nameContext ctx) { return visitChildren(ctx); }
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation returns the result of calling
+	 * {@link #visitChildren} on {@code ctx}.</p>
+	 */
+	@Override public T visitWhereCompare(@NotNull GremlinSqlParser.WhereCompareContext ctx) { return visitChildren(ctx); }
 }
