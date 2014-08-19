@@ -1,4 +1,4 @@
-package com.github.jkschneider.gremlinsql
+package com.github.jkschneider.gremlinsql.mapping
 
 import com.github.jkschneider.gremlinsql.grammar.GremlinSqlLexer
 import com.github.jkschneider.gremlinsql.grammar.GremlinSqlParser

@@ -1,12 +1,13 @@
-package com.github.jkschneider.gremlinsql
+package com.github.jkschneider.gremlinsql.mapping
 
+import com.github.jkschneider.gremlinsql.SampleGraph
 import com.tinkerpop.gremlin.groovy.Gremlin
 import org.junit.Before
 import org.junit.BeforeClass
 import spock.lang.Specification
 import spock.lang.Unroll
 
-import static GremlinFromSqlBuilder.*
+import static com.github.jkschneider.gremlinsql.mapping.GremlinFromSqlBuilder.*
 
 class GremlinFromSqlBuilderSpec extends Specification {
     @BeforeClass static void beforeAll() { Gremlin.load() }
