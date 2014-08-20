@@ -31,7 +31,6 @@ class GremlinConnection implements Connection {
 
     @Override
     Statement createStatement() throws SQLException {
-        throw new SQLException(doesNotSupportPrefix + "createStatement")
     }
 
     @Override

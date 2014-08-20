@@ -127,11 +127,12 @@ class GremlinResultSet implements ResultSet {
         return null
     }
 
-    private void checkHasColumn(String columnLabel, Class<?> c) throws SQLException {
+    private void checkHasColumn(String columnLabel, Class<?>... cs) throws SQLException {
         if(!result.hasProperty(columnLabel))
             throw new SQLException("Unknown column $columnLabel")
-        if(!c.isAssignableFrom(result[columnLabel].class))
-            throw new SQLException("Column $columnLabel is not of type $c")
+        def resultType = result[columnLabel].class
+        if(cs.inject(false) { acc, c -> acc || c.isAssignableFrom(resultType) })
+            throw new SQLException("Column $columnLabel is not of the correct type")
     }
 
     @Override
@@ -196,25 +197,38 @@ class GremlinResultSet implements ResultSet {
 
     @Override
     java.sql.Date getDate(String columnLabel) throws SQLException {
-        // TODO implement me
-        return null
+        checkHasColumn(columnLabel, Long.class, Date.class, java.sql.Date.class)
+        def result = result[columnLabel]
+        if(result instanceof Long)
+            return new java.sql.Date(result as Long)
+        if(result instanceof Date)
+            return new java.sql.Date((result as Date).getTime())
+        return result // result is already java.sql.Date
     }
 
     @Override
     Time getTime(String columnLabel) throws SQLException {
-        // TODO implement me
-        return null
+        checkHasColumn(columnLabel, Long.class, Time.class)
+        def result = result[columnLabel]
+        if(result instanceof Long)
+            return new Time(result as Long)
+        return result // result is already java.sql.Time
     }
 
     @Override
     Timestamp getTimestamp(String columnLabel) throws SQLException {
-        // TODO implement me
-        return null
+        def result = result[columnLabel]
+        if(result instanceof Long)
+            return new Timestamp(result as Long)
+        if(result instanceof Date)
+            return new Timestamp((result as Date).getTime())
+        return result // result is already java.sql.Timestamp
     }
 
     @Override
     InputStream getAsciiStream(String columnLabel) throws SQLException {
-        return null
+        def result = result[columnLabel]
+        return new ByteArrayInputStream(result.toString().getBytes("UTF-8"))
     }
 
     @Override
@@ -234,7 +248,6 @@ class GremlinResultSet implements ResultSet {
 
     @Override
     void clearWarnings() throws SQLException {
-
     }
 
     @Override
